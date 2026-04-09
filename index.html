@@ -138,13 +138,19 @@ nav a:hover { color: var(--text-clay); }
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
 }
+.hero-image-wrap {
+  max-width: 860px;
+  margin: 72px auto 0;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  border-radius: 4px;
+}
 .hero-img {
   width: 100%;
   max-width: 860px;
   border-radius: 4px;
-  margin: 72px auto 0;
+  margin: 0 auto;
   display: block;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  box-shadow: none;
   opacity: 0;
   animation: fadeIn 1.4s ease 0.8s forwards;
 }
@@ -255,6 +261,11 @@ img {
 }
 
 /* Product section images */
+.image-section {
+  padding: 15vh 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .section-img-wrap {
   max-width: 960px;
   margin: 0 auto;
@@ -446,7 +457,9 @@ footer a:hover { color: var(--bg-plaster); }
       <a href="#contact" class="btn btn-primary">Join the Waitlist</a>
       <a href="#about" class="btn btn-outline">Our Story</a>
     </div>
-    <img src="kids-rock.jpg" alt="Child balancing on Sarn &amp; Skog stepping stones in a bright playroom" class="hero-img">
+    <div class="hero-image-wrap">
+      <img src="kids-rock.jpg" alt="Child balancing on Sarn &amp; Skog stepping stones in a bright playroom" class="hero-img">
+    </div>
   </div>
 </section>
 
@@ -456,32 +469,36 @@ footer a:hover { color: var(--bg-plaster); }
     <div class="section-title">Heirlooms for the modern home.</div>
     <div class="features">
       <div class="feature">
-        <div class="subheading" style="margin-bottom:14px;">Biomimetic Texture</div>
+        <h3 class="subheading" style="margin-bottom:14px;">Biomimetic Texture</h3>
         <p>Cast from the grooves and ridges of natural river stone. Every surface holds the memory of water and time.</p>
       </div>
       <div class="feature">
-        <div class="subheading" style="margin-bottom:14px;">Quiet Safety</div>
+        <h3 class="subheading" style="margin-bottom:14px;">Quiet Safety</h3>
         <p>Heavy, non-slip silicone that grips any floor — and grips your attention only when it earns it.</p>
       </div>
       <div class="feature">
-        <div class="subheading" style="margin-bottom:14px;">Earth Tones</div>
+        <h3 class="subheading" style="margin-bottom:14px;">Earth Tones</h3>
         <p>Colors drawn from riverbeds and forests. Stones that belong on a coffee table as much as in a playroom.</p>
       </div>
       <div class="feature">
-        <div class="subheading" style="margin-bottom:14px;">Built to Outlast</div>
+        <h3 class="subheading" style="margin-bottom:14px;">Built to Outlast</h3>
         <p>Durable enough for the wildest leaps. Clean with a damp cloth, or pop them in the dishwasher.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-img-wrap">
-  <img src="multi_shot.jpg" alt="Sarn &amp; Skog stepping stones — the full collection">
-</div>
+<section class="image-section">
+  <div class="section-img-wrap">
+    <img src="multi_shot.jpg" alt="Sarn &amp; Skog stepping stones — the full collection">
+  </div>
+</section>
 
-<div class="section-img-wrap">
-  <img src="stones-detail.jpg" alt="Sarn &amp; Skog stepping stones — close-up of natural stone textures and earth tones" style="margin-top:8vh;">
-</div>
+<section class="image-section">
+  <div class="section-img-wrap">
+    <img src="stones-detail.jpg" alt="Sarn &amp; Skog stepping stones — close-up of natural stone textures and earth tones">
+  </div>
+</section>
 
 <section class="section-alt" id="about">
   <div class="container">
@@ -515,14 +532,16 @@ footer a:hover { color: var(--bg-plaster); }
   </div>
 </section>
 
-<div class="section-img-wrap">
-  <img src="kids-rock-alt.jpg" alt="Child playing with Sarn &amp; Skog stepping stones in a sunlit playroom" style="margin-bottom:15vh;">
-</div>
+<section class="image-section">
+  <div class="section-img-wrap">
+    <img src="kids-rock-alt.jpg" alt="Child playing with Sarn &amp; Skog stepping stones in a sunlit playroom">
+  </div>
+</section>
 
 <section class="cta" id="contact">
   <div class="container">
-    <h2>Be the first to know.</h2>
-    <p>We are launching soon. Leave your name and we will reach out when Sarn &amp; Skog is ready to ship.</p>
+    <h2>Stay close to the launch.</h2>
+    <p>Leave your name and we will reach out when Sarn &amp; Skog is ready to ship.</p>
     <div class="waitlist-form" id="waitlistFormWrap">
       <form action="https://formsubmit.co/hello@fjordandfawn.com" method="POST" id="waitlistForm">
         <input type="hidden" name="_subject" value="Fjord &amp; Fawn waitlist signup">
