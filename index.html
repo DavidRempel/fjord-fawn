@@ -6,40 +6,54 @@
 <title>Fjord & Fawn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --cream: #FAF8F5;
-  --warm-taupe: #8B7355;
-  --deep-earth: #2C2822;
-  --soft-sage: #A8B5A0;
-  --oatmeal: #E8E2D9;
+  --bg-plaster: #F7F5F0;
+  --bg-stone: #EAE6DF;
+  --text-charcoal: #2A2A2A;
+  --text-clay: #7A7265;
+  --accent-sage: #8B9484;
+  --accent-earth: #A89078;
+  --border-light: #D6D2C9;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  color: var(--deep-earth);
-  background: var(--cream);
-  line-height: 1.75;
+  background-color: var(--bg-plaster);
+  color: var(--text-charcoal);
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
-  letter-spacing: 0.01em;
+  font-size: 16px;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
 
 /* Typography */
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-charcoal);
+}
+
+.subheading {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-clay);
+  font-weight: 500;
 }
 
 /* Animations */
@@ -54,23 +68,16 @@ h1, h2, h3 {
 .fade-up { animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .fade-in { animation: fadeIn 1.2s ease both; }
 
-section { opacity: 0; animation: fadeIn 1s ease forwards; }
-section:nth-child(1) { animation-delay: 0.1s; }
-section:nth-child(2) { animation-delay: 0.2s; }
-section:nth-child(3) { animation-delay: 0.3s; }
-
 /* Header */
 header {
   padding: 28px 0;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(250, 248, 245, 0.92);
+  top: 0; left: 0; right: 0;
+  background: rgba(247, 245, 240, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 100;
-  border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+  border-bottom: 1px solid var(--border-light);
 }
 header .container {
   display: flex;
@@ -81,45 +88,45 @@ header .container {
 }
 .logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--warm-taupe);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-charcoal);
   letter-spacing: 0.04em;
 }
 nav { display: flex; gap: 32px; flex-wrap: wrap; }
 nav a {
-  color: var(--deep-earth);
+  color: var(--text-charcoal);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: color 0.3s;
 }
-nav a:hover { color: var(--warm-taupe); }
+nav a:hover { color: var(--text-clay); }
 
 /* Hero */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 140px 0 100px;
+  padding: 140px 0 15vh;
   text-align: center;
 }
 .hero h1 {
-  font-size: clamp(42px, 7vw, 80px);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
   font-style: italic;
-  color: var(--deep-earth);
+  color: var(--text-charcoal);
   margin-bottom: 28px;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 .hero p {
-  font-size: 17px;
-  color: var(--warm-taupe);
+  font-size: 16px;
+  color: var(--text-clay);
   max-width: 480px;
-  margin: 0 auto 48px;
+  margin: 0 auto 56px;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
 }
@@ -134,142 +141,149 @@ nav a:hover { color: var(--warm-taupe); }
 .hero-img {
   width: 100%;
   max-width: 720px;
-  border-radius: 24px;
-  margin: 60px auto 0;
+  border-radius: 4px;
+  margin: 72px auto 0;
   display: block;
-  box-shadow: 0 24px 80px rgba(44, 40, 34, 0.14);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
   opacity: 0;
   animation: fadeIn 1.4s ease 0.8s forwards;
 }
 
-/* Button */
+/* Buttons — quiet luxury style */
 .btn {
   display: inline-block;
-  padding: 14px 36px;
-  border-radius: 4px;
+  padding: 16px 36px;
+  border-radius: 0;
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-primary {
-  background: var(--warm-taupe);
-  color: var(--cream);
-  border: 1px solid var(--warm-taupe);
+  background: transparent;
+  color: var(--text-charcoal);
+  border: 1px solid var(--text-charcoal);
 }
 .btn-primary:hover {
-  background: var(--deep-earth);
-  border-color: var(--deep-earth);
+  background: var(--text-charcoal);
+  color: var(--bg-plaster);
 }
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--warm-taupe);
-  color: var(--warm-taupe);
+  border: 1px solid var(--border-light);
+  color: var(--text-clay);
 }
 .btn-outline:hover {
-  background: var(--warm-taupe);
-  color: var(--cream);
+  border-color: var(--text-charcoal);
+  color: var(--text-charcoal);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-charcoal);
+  border: 1px solid var(--text-charcoal);
 }
 
-/* Section */
-.section { padding: 120px 0; }
-.section-alt { background: #FFFFFF; }
-
-/* Features */
+/* Sections */
+section {
+  padding: 15vh 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+section:first-of-type { padding-top: 0; }
+.section-alt { background: var(--bg-stone); }
 .section-label {
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--warm-taupe);
-  margin-bottom: 12px;
+  letter-spacing: 0.2em;
+  color: var(--text-clay);
+  font-weight: 500;
+  margin-bottom: 14px;
   text-align: center;
 }
 .section-title {
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 300;
   font-style: italic;
-  color: var(--deep-earth);
-  margin-bottom: 20px;
+  color: var(--text-charcoal);
+  margin-bottom: 24px;
   text-align: center;
 }
 .section-sub {
   font-size: 15px;
   max-width: 520px;
-  margin: 0 auto 64px;
+  margin: 0 auto 72px;
   text-align: center;
-  color: var(--warm-taupe);
-  opacity: 0.85;
+  color: var(--text-clay);
 }
 
+/* Features */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2px;
-  background: var(--oatmeal);
-  border-radius: 20px;
+  background: var(--bg-stone);
+  border-radius: 4px;
   overflow: hidden;
 }
 .feature {
-  background: var(--cream);
-  padding: 48px 36px;
+  background: var(--bg-plaster);
+  padding: 56px 40px;
   text-align: center;
-  transition: background 0.4s;
 }
-.feature:hover { background: #fff; }
-.feature-icon { font-size: 36px; margin-bottom: 20px; display: block; }
 .feature h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
   font-style: italic;
-  margin-bottom: 12px;
-  color: var(--deep-earth);
+  margin-bottom: 14px;
+  color: var(--text-charcoal);
 }
 .feature p {
   font-size: 14px;
-  color: var(--warm-taupe);
-  opacity: 0.8;
-  line-height: 1.8;
+  color: var(--text-clay);
+  line-height: 1.85;
 }
 
-/* Product detail */
-.product-detail-img {
-  width: 100%;
-  max-width: 800px;
-  display: block;
+/* Images — soft luxury shadow */
+img {
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  transition: transform 1s ease;
+}
+
+/* Product section images */
+.section-img-wrap {
+  max-width: 960px;
   margin: 0 auto;
-  border-radius: 20px;
-  box-shadow: 0 16px 64px rgba(44, 40, 34, 0.10);
+  padding: 0 5vw;
+}
+.section-img-wrap img {
+  width: 100%;
+  display: block;
 }
 
 /* About */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 96px;
   align-items: center;
 }
 @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
-.about-img {
-  border-radius: 20px;
-  width: 100%;
-  object-fit: contain;
-  background: var(--oatmeal);
-  box-shadow: 0 12px 48px rgba(44, 40, 34, 0.10);
-}
 .about-text h2 {
-  font-size: clamp(28px, 3.5vw, 44px);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 300;
   font-style: italic;
   margin-bottom: 28px;
-  color: var(--deep-earth);
+  color: var(--text-charcoal);
 }
 .about-text p {
   font-size: 15px;
   margin-bottom: 20px;
-  color: var(--deep-earth);
+  color: var(--text-charcoal);
   opacity: 0.78;
   line-height: 1.9;
 }
@@ -282,59 +296,60 @@ nav a:hover { color: var(--warm-taupe); }
 }
 @media (max-width: 768px) { .testimonial-grid { grid-template-columns: 1fr; } }
 .testimonial {
-  background: var(--cream);
-  border-radius: 20px;
-  padding: 48px;
-  border: 1px solid rgba(139, 115, 85, 0.12);
+  background: var(--bg-plaster);
+  border-radius: 4px;
+  padding: 56px 48px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
 }
 .testimonial p {
   font-family: 'Cormorant Garamond', serif;
   font-size: 22px;
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 400;
   line-height: 1.7;
-  color: var(--deep-earth);
-  margin-bottom: 24px;
+  color: var(--text-charcoal);
+  margin-bottom: 28px;
 }
 .testimonial cite {
-  font-size: 12px;
+  font-size: 11px;
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--warm-taupe);
+  color: var(--text-clay);
 }
 
 /* CTA */
 .cta {
-  background: var(--deep-earth);
-  color: var(--cream);
+  background: var(--text-charcoal);
+  color: var(--bg-plaster);
   text-align: center;
-  padding: 120px 0;
+  padding: 15vh 0;
 }
+.cta .container { max-width: 1200px; }
 .cta h2 {
-  font-size: clamp(32px, 5vw, 60px);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 300;
   font-style: italic;
   margin-bottom: 20px;
-  color: var(--cream);
+  color: var(--bg-plaster);
 }
 .cta p {
   font-size: 15px;
   max-width: 400px;
-  margin: 0 auto 48px;
+  margin: 0 auto 56px;
   opacity: 0.7;
-  color: var(--cream);
+  color: var(--bg-plaster);
 }
 .cta .btn-primary {
-  background: var(--cream);
-  color: var(--deep-earth);
-  border-color: var(--cream);
+  background: transparent;
+  color: var(--bg-plaster);
+  border-color: var(--bg-plaster);
 }
 .cta .btn-primary:hover {
-  background: var(--warm-taupe);
-  border-color: var(--warm-taupe);
-  color: var(--cream);
+  background: var(--bg-plaster);
+  color: var(--text-charcoal);
 }
+
+/* Waitlist — high-end stationery inputs */
 .waitlist-form {
   max-width: 560px;
   margin: 0 auto;
@@ -342,76 +357,67 @@ nav a:hover { color: var(--warm-taupe); }
 .waitlist-fields {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
-  gap: 12px;
+  gap: 16px;
   align-items: stretch;
 }
 .waitlist-form input {
   width: 100%;
-  padding: 16px 18px;
-  border-radius: 6px;
-  border: 1px solid rgba(250, 248, 245, 0.22);
-  background: rgba(250, 248, 245, 0.06);
-  color: var(--cream);
-  font: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  padding: 14px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--bg-plaster);
+  transition: border-color 0.4s ease;
+  border-radius: 0;
 }
 .waitlist-form input::placeholder {
-  color: rgba(250, 248, 245, 0.55);
+  color: rgba(247, 245, 240, 0.45);
+  font-weight: 300;
 }
 .waitlist-form input:focus {
   outline: none;
-  border-color: rgba(250, 248, 245, 0.65);
-  background: rgba(250, 248, 245, 0.1);
+  border-bottom-color: var(--bg-plaster);
 }
 .waitlist-form .btn {
-  border-radius: 6px;
-  padding: 16px 26px;
+  border-radius: 0;
+  padding: 14px 28px;
 }
 .waitlist-note,
 .waitlist-success {
   margin-top: 16px;
   font-size: 13px;
-  color: rgba(250, 248, 245, 0.72);
+  color: rgba(247, 245, 240, 0.6);
 }
 .waitlist-success {
   display: none;
-  color: #DDE8D7;
+  color: var(--accent-sage);
 }
-.waitlist-form.is-success form {
-  display: none;
-}
-.waitlist-form.is-success .waitlist-success {
-  display: block;
-}
+.waitlist-form.is-success form { display: none; }
+.waitlist-form.is-success .waitlist-success { display: block; }
 .hp-field {
   position: absolute;
   left: -9999px;
 }
 @media (max-width: 768px) {
-  .waitlist-fields {
-    grid-template-columns: 1fr;
-  }
+  .waitlist-fields { grid-template-columns: 1fr; }
+  .waitlist-form .btn { width: 100%; }
 }
 
 /* Footer */
 footer {
-  background: var(--deep-earth);
-  color: rgba(250, 248, 245, 0.45);
+  background: var(--text-charcoal);
+  color: rgba(247, 245, 240, 0.4);
   padding: 48px 0;
   font-size: 13px;
 }
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
 footer a {
-  color: rgba(250, 248, 245, 0.55);
+  color: rgba(247, 245, 240, 0.5);
   text-decoration: none;
   transition: color 0.3s;
 }
-footer a:hover { color: var(--cream); }
+footer a:hover { color: var(--bg-plaster); }
 </style>
 </head>
 <body>
@@ -435,67 +441,58 @@ footer a:hover { color: var(--cream); }
       <a href="#contact" class="btn btn-primary">Join the Waitlist</a>
       <a href="#about" class="btn btn-outline">Our Story</a>
     </div>
-    <img src="kids-rock.jpg" alt="Child balancing on Fjord & Fawn stepping stones in a bright playroom" class="hero-img">
+    <img src="kids-rock.jpg" alt="Child balancing on Fjord &amp; Fawn stepping stones in a bright playroom" class="hero-img">
   </div>
 </section>
 
-<section class="section" id="products">
+<section id="products">
   <div class="container">
     <div class="section-label">The Collection</div>
     <div class="section-title">Heirlooms for the modern home.</div>
     <div class="features">
       <div class="feature">
-        <span class="feature-icon">🌿</span>
-        <h3>Biomimetic Texture</h3>
+        <div class="subheading" style="margin-bottom:14px;">Biomimetic Texture</div>
         <p>Cast from the grooves and ridges of natural river stone. Every surface holds the memory of water and time.</p>
       </div>
       <div class="feature">
-        <span class="feature-icon">🛡️</span>
-        <h3>Quiet Safety</h3>
+        <div class="subheading" style="margin-bottom:14px;">Quiet Safety</div>
         <p>Heavy, non-slip silicone that grips any floor — and grips your attention only when it earns it.</p>
       </div>
       <div class="feature">
-        <span class="feature-icon">🎨</span>
-        <h3>Earth Tones</h3>
+        <div class="subheading" style="margin-bottom:14px;">Earth Tones</div>
         <p>Colors drawn from riverbeds and forests. Stones that belong on a coffee table as much as in a playroom.</p>
       </div>
       <div class="feature">
-        <span class="feature-icon">💪</span>
-        <h3>Built to Outlast</h3>
+        <div class="subheading" style="margin-bottom:14px;">Built to Outlast</div>
         <p>Durable enough for the wildest leaps. Clean with a damp cloth, or pop them in the dishwasher.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container" style="max-width:960px;">
-    <img src="multi_shot.jpg" alt="Fjord & Fawn stepping stones — the full collection" style="width:100%; border-radius:20px; box-shadow:0 20px 80px rgba(44,40,34,0.13); display:block;">
-  </div>
-</section>
+<div class="section-img-wrap">
+  <img src="multi_shot.jpg" alt="Fjord &amp; Fawn stepping stones — the full collection">
+</div>
 
-<section class="section">
-  <div class="container" style="max-width:860px;">
-    <img src="stones-detail.jpg" alt="Fjord & Fawn stepping stones — close-up of natural stone textures and earth tones" style="width:100%; border-radius:20px; box-shadow:0 16px 64px rgba(44,40,34,0.10); display:block;">
-  </div>
-</section>
+<div class="section-img-wrap">
+  <img src="stones-detail.jpg" alt="Fjord &amp; Fawn stepping stones — close-up of natural stone textures and earth tones" style="margin-top:8vh;">
+</div>
 
-<section class="section section-alt" id="about">
+<section class="section-alt" id="about">
   <div class="container">
     <div class="about-grid">
-      <img src="multi_shot.jpg" alt="Fjord & Fawn stepping stones — the full collection" class="about-img" style="display:none;">
       <div class="about-text">
         <div class="section-label" style="text-align:left;">Our Story</div>
         <h2>Bringing the Riverbank Home</h2>
         <p>We watched our children longing for the forest floor, for the uneven joy of stone and root. We wanted to bring that grounding tactile experience indoors — without the neon plastic, without the clutter, without compromise.</p>
-        <p>Fjord & Fawn stepping stones are cast from real river rocks, capturing every ridge and groove. Made from food-grade silicone, they are heavy enough to stay put, soft enough to feel like the earth itself. They belong in a living room as naturally as a book or a candle.</p>
+        <p>Fjord &amp; Fawn stepping stones are cast from real river rocks, capturing every ridge and groove. Made from food-grade silicone, they are heavy enough to stay put, soft enough to feel like the earth itself. They belong in a living room as naturally as a book or a candle.</p>
         <p>This is not a toy. It is an invitation to move through the world with curiosity, balance, and care.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt">
+<section class="section-alt">
   <div class="container">
     <div class="section-label">What Families Are Saying</div>
     <div class="section-title">Stories of quiet play.</div>
@@ -512,16 +509,14 @@ footer a:hover { color: var(--cream); }
   </div>
 </section>
 
-<section class="section" style="padding: 0 0 80px;">
-  <div class="container" style="max-width:960px;">
-    <img src="kids-rock-alt.jpg" alt="Child playing with Fjord & Fawn stepping stones in a sunlit playroom" style="width:100%; border-radius:20px; box-shadow:0 20px 80px rgba(44,40,34,0.13); display:block;">
-  </div>
-</section>
+<div class="section-img-wrap">
+  <img src="kids-rock-alt.jpg" alt="Child playing with Fjord &amp; Fawn stepping stones in a sunlit playroom" style="margin-bottom:15vh;">
+</div>
 
 <section class="cta" id="contact">
   <div class="container">
     <h2>Be the first to know.</h2>
-    <p>We are launching soon. Leave your name and we will reach out when Fjord & Fawn is ready to ship.</p>
+    <p>We are launching soon. Leave your name and we will reach out when Fjord &amp; Fawn is ready to ship.</p>
     <div class="waitlist-form" id="waitlistFormWrap">
       <form action="https://formsubmit.co/hello@fjordandfawn.com" method="POST" id="waitlistForm">
         <input type="hidden" name="_subject" value="Fjord &amp; Fawn waitlist signup">
@@ -546,9 +541,7 @@ footer a:hover { color: var(--cream); }
 <footer>
   <div class="container">
     <span>&copy; 2026 Fjord &amp; Fawn. All rights reserved.</span>
-    <span>
-      <a href="mailto:hello@fjordandfawn.com">hello@fjordandfawn.com</a>
-    </span>
+    <span><a href="mailto:hello@fjordandfawn.com">hello@fjordandfawn.com</a></span>
   </div>
 </footer>
 
