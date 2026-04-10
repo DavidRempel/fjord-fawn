@@ -105,54 +105,69 @@ nav a {
 }
 nav a:hover { color: var(--text-clay); }
 
-/* Hero */
+/* Hero — full-width banner style */
 .hero {
   min-height: 100vh;
+  padding: 0;
+  position: relative;
   display: flex;
-  align-items: center;
-  padding: 170px 0 15vh;
-  text-align: center;
+  flex-direction: column;
 }
-.hero h1 {
-  font-size: clamp(3rem, 6vw, 5rem);
+.hero-banner {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(42,42,42,0.55) 0%, rgba(42,42,42,0.1) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 8vw 10vh;
+}
+.hero-overlay h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
   font-weight: 300;
   font-style: italic;
-  color: var(--text-charcoal);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  color: #F7F5F0;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
-.hero p {
-  font-size: 16px;
-  color: var(--text-clay);
-  max-width: 480px;
-  margin: 0 auto 56px;
-  opacity: 0;
-  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+.hero-overlay p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(247,245,240,0.8);
+  max-width: 440px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  letter-spacing: 0.01em;
 }
 .hero-cta {
   display: flex;
-  gap: 20px;
-  justify-content: center;
+  gap: 16px;
   flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
 }
-.hero-image-wrap {
-  max-width: 860px;
-  margin: 72px auto 0;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-  border-radius: 4px;
+.hero-cta .btn-primary {
+  background: #F7F5F0;
+  color: var(--text-charcoal);
+  border-color: #F7F5F0;
 }
-.hero-img {
-  width: 100%;
-  max-width: 860px;
-  border-radius: 4px;
-  margin: 0 auto;
-  display: block;
-  box-shadow: none;
-  opacity: 0;
-  animation: fadeIn 1.4s ease 0.8s forwards;
+.hero-cta .btn-primary:hover {
+  background: transparent;
+  color: #F7F5F0;
+}
+.hero-cta .btn-outline {
+  border-color: rgba(247,245,240,0.5);
+  color: #F7F5F0;
+}
+.hero-cta .btn-outline:hover {
+  border-color: #F7F5F0;
 }
 
 /* Buttons — quiet luxury style */
@@ -450,15 +465,13 @@ footer a:hover { color: var(--bg-plaster); }
 </header>
 
 <section class="hero">
-  <div class="container">
-    <h1>An invitation to pause.</h1>
-    <p>Silicone stepping stones cast from the textures of real river rock — designed for the way children move, and the way a home looks when it is loved.</p>
+  <img src="river-stones-flatlay.jpg" alt="Natural river stones on a woven jute mat" class="hero-banner">
+  <div class="hero-overlay">
+    <h1>Nature underfoot. Built to last.</h1>
+    <p>Silicone stepping stones cast from real river rock — biomimetic textures, earth tones, and the quiet confidence that comes from learning to trust your footing.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Join the Waitlist</a>
       <a href="#about" class="btn btn-outline">Our Story</a>
-    </div>
-    <div class="hero-image-wrap">
-      <img src="kids-rock.jpg" alt="Child balancing on Fjord &amp; Fawn stepping stones in a bright playroom" class="hero-img">
     </div>
   </div>
 </section>
