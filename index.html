@@ -297,16 +297,21 @@ img {
 .section-alt { background: var(--bg-stone); }
 .about-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 64px;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 40px;
   align-items: center;
 }
 @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
+.about-text {
+  max-width: 460px;
+}
 .about-img {
   width: 100%;
+  max-width: none;
   display: block;
   object-fit: cover;
   border-radius: 4px;
+  justify-self: end;
 }
 .about-text h2 {
   font-size: clamp(1.9rem, 3.2vw, 3.2rem);
