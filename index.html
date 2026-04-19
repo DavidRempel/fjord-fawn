@@ -438,6 +438,34 @@ img {
   line-height: 1.9;
 }
 
+.lifestyle-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 40px;
+  align-items: center;
+}
+.lifestyle-img {
+  width: 100%;
+  max-width: 545px;
+  display: block;
+  object-fit: cover;
+  justify-self: center;
+}
+.lifestyle-copy h3 {
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  font-style: italic;
+  margin-bottom: 18px;
+}
+.lifestyle-copy p {
+  font-size: 15px;
+  color: var(--text-charcoal);
+  opacity: 0.8;
+  line-height: 1.9;
+}
+@media (max-width: 768px) {
+  .lifestyle-card { grid-template-columns: 1fr; gap: 28px; }
+}
+
 /* Specs */
 .specs-grid {
   display: grid;
@@ -756,6 +784,19 @@ footer .container {
         <p>This is not a toy. It is an invitation to move through the world with curiosity, balance, and care.</p>
       </div>
       <img src="kids-rock-alt.jpg" alt="Child stepping across Fjord &amp; Fawn stones in a warm home setting" class="about-img" width="1280" height="697" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">In Use</div>
+    <div class="lifestyle-card fade-up">
+      <img src="lifestyle-foot-stones.jpg" alt="Child stepping onto Sarn Stone stepping stones in a warm home setting" class="lifestyle-img" width="545" height="409" loading="lazy" decoding="async">
+      <div class="lifestyle-copy">
+        <h3>Made for bare feet, balance, and quiet confidence.</h3>
+        <p>A softer, warmer kind of obstacle course, grounded in the textures children reach for instinctively. This is the feeling we want the stones to bring into the room.</p>
+      </div>
     </div>
   </div>
 </section>
