@@ -74,7 +74,7 @@ h1, h2, h3 {
 
 /* Header */
 header {
-  padding: 24px 0;
+  padding: 22px 0;
   position: fixed;
   top: 0; left: 0; right: 0;
   background: rgba(247, 245, 240, 0.94);
@@ -82,6 +82,13 @@ header {
   -webkit-backdrop-filter: blur(12px);
   z-index: 100;
   border-bottom: 1px solid var(--border-light);
+  transition: padding 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+header.scrolled {
+  padding: 14px 0;
+  background: rgba(247, 245, 240, 0.88);
+  box-shadow: 0 14px 40px rgba(42,42,42,0.06);
+  border-bottom-color: rgba(214, 210, 201, 0.8);
 }
 header .container {
   display: flex;
@@ -92,22 +99,40 @@ header .container {
 }
 .logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 500;
   color: var(--text-charcoal);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
-nav { display: flex; gap: 32px; flex-wrap: wrap; }
+nav { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
 nav a {
+  position: relative;
   color: var(--text-charcoal);
   text-decoration: none;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: color 0.3s;
+  padding-bottom: 6px;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
-nav a:hover { color: var(--text-clay); }
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0.75;
+  transition: transform 0.3s ease;
+}
+nav a:hover,
+nav a.is-active { color: var(--text-clay); }
+nav a:hover::after,
+nav a.is-active::after { transform: scaleX(1); }
 
 /* Hero */
 .hero {
@@ -253,19 +278,66 @@ section { padding: 12vh 0; }
   line-height: 1.85;
 }
 
+/* Product section */
+.product-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 32px;
+  align-items: stretch;
+}
+.product-hero-card {
+  background: var(--bg-stone);
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.product-hero-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 28px;
+}
+.product-note {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-clay);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.product-hero-copy h3 {
+  font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.08;
+  margin-bottom: 14px;
+}
+.product-hero-copy p {
+  font-size: 14px;
+  color: var(--text-clay);
+  line-height: 1.85;
+  max-width: 34rem;
+}
+
 /* Features */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
   background: var(--bg-stone);
   border-radius: 4px;
   overflow: hidden;
+  align-self: stretch;
 }
 .feature {
   background: var(--bg-plaster);
   padding: 48px 36px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 220px;
 }
 .feature h3 {
   font-size: 20px;
@@ -278,6 +350,12 @@ section { padding: 12vh 0; }
   font-size: 14px;
   color: var(--text-clay);
   line-height: 1.85;
+}
+@media (max-width: 980px) {
+  .product-showcase { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .features { grid-template-columns: 1fr; }
 }
 
 /* Image sections */
@@ -427,10 +505,53 @@ img {
 
 /* CTA */
 .cta {
-  background: var(--text-charcoal);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2F2D2A 0%, #262522 100%);
   color: var(--bg-plaster);
   text-align: center;
-  padding: 14vh 0;
+  padding: 16vh 0;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: auto -12% -28% auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,144,120,0.16) 0%, rgba(168,144,120,0) 70%);
+  pointer-events: none;
+}
+.cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1080px, 88vw);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(247,245,240,0), rgba(247,245,240,0.3), rgba(247,245,240,0));
+}
+.cta .container {
+  position: relative;
+  z-index: 2;
+}
+.cta-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 64px clamp(24px, 5vw, 64px);
+  border: 1px solid rgba(247,245,240,0.12);
+  background: linear-gradient(180deg, rgba(247,245,240,0.035), rgba(247,245,240,0.015));
+  box-shadow: 0 28px 80px rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+.cta-kicker {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(247,245,240,0.55);
+  font-weight: 500;
+  margin-bottom: 14px;
 }
 .cta h2 {
   font-size: clamp(2.2rem, 4.5vw, 3.6rem);
@@ -441,7 +562,7 @@ img {
 }
 .cta p {
   font-size: 14px;
-  max-width: 380px;
+  max-width: 460px;
   margin: 0 auto 48px;
   opacity: 0.65;
   color: var(--bg-plaster);
@@ -567,31 +688,35 @@ footer .container {
   <div class="container">
     <div class="section-label">The Collection</div>
     <div class="section-title">Heirlooms for the modern home.</div>
-    <div class="features">
-      <div class="feature">
-        <h3>Biomimetic Texture</h3>
-        <p>Cast from the grooves and ridges of natural river stone. Every surface holds the memory of water and time.</p>
+    <div class="section-sub">A sculptural play set with enough presence to anchor the room, not disappear into it.</div>
+    <div class="product-showcase">
+      <div class="product-hero-card fade-up">
+        <img src="multi_shot.jpg" alt="Fjord &amp; Fawn — the full collection" width="1280" height="697" loading="lazy" decoding="async">
+        <div class="product-hero-copy">
+          <div class="product-note">The Launch Set</div>
+          <h3>Six silicone stones, each shaped by a real river rock.</h3>
+          <p>Designed for balance paths, obstacle courses, and open-ended sensory play, with enough weight and restraint to feel considered in a living room.</p>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Quiet Safety</h3>
-        <p>Heavy, non-slip silicone that grips any floor — and grips your attention only when it earns it.</p>
-      </div>
-      <div class="feature">
-        <h3>Earth Tones</h3>
-        <p>Colors drawn from riverbeds and forests. Stones that belong on a coffee table as much as in a playroom.</p>
-      </div>
-      <div class="feature">
-        <h3>Built to Outlast</h3>
-        <p>Durable enough for the wildest leaps. Clean with a damp cloth, or pop them in the dishwasher.</p>
+      <div class="features fade-up">
+        <div class="feature">
+          <h3>Biomimetic Texture</h3>
+          <p>Cast from the grooves and ridges of natural river stone. Every surface holds the memory of water and time.</p>
+        </div>
+        <div class="feature">
+          <h3>Quiet Safety</h3>
+          <p>Heavy, non-slip silicone that grips any floor and grips your attention only when it earns it.</p>
+        </div>
+        <div class="feature">
+          <h3>Earth Tones</h3>
+          <p>Colors drawn from riverbeds and forests. Stones that belong on a coffee table as much as in a playroom.</p>
+        </div>
+        <div class="feature">
+          <h3>Built to Outlast</h3>
+          <p>Durable enough for the wildest leaps. Clean with a damp cloth, or pop them in the dishwasher.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Product Detail Image -->
-<section style="padding: 0;">
-  <div class="section-img-wrap">
-    <img src="multi_shot.jpg" alt="Fjord &amp; Fawn — the full collection" width="1280" height="697" loading="lazy" decoding="async">
   </div>
 </section>
 
@@ -692,25 +817,28 @@ footer .container {
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="container">
-    <h2>Stay close to the launch.</h2>
-    <p>Leave your name and we'll be in touch when Sarn Stone is ready to ship. Thoughtful updates only.</p>
-    <div class="waitlist-form" id="waitlistFormWrap">
-      <form action="https://formsubmit.co/hello@fjordandfawn.com" method="POST" id="waitlistForm">
-        <input type="hidden" name="_subject" value="Fjord &amp; Fawn waitlist signup">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://fjordandfawn.com/#contact?joined=1">
-        <div class="hp-field" aria-hidden="true">
-          <label>Leave this field empty <input type="text" name="_honey"></label>
-        </div>
-        <div class="waitlist-fields">
-          <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
-          <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
-          <button type="submit" class="btn btn-primary">Join the Waitlist</button>
-        </div>
-      </form>
-      <div class="waitlist-success">Thanks, you're on the list. We'll be in touch when Sarn Stone is ready.</div>
-      <div class="waitlist-note">No spam. No noise. Just the launch.</div>
+    <div class="cta-inner">
+      <div class="cta-kicker">Waitlist</div>
+      <h2>Stay close to the launch.</h2>
+      <p>Leave your name and we'll be in touch when Sarn Stone is ready to ship. Thoughtful updates only, sent with a little more care than urgency.</p>
+      <div class="waitlist-form" id="waitlistFormWrap">
+        <form action="https://formsubmit.co/hello@fjordandfawn.com" method="POST" id="waitlistForm">
+          <input type="hidden" name="_subject" value="Fjord &amp; Fawn waitlist signup">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://fjordandfawn.com/#contact?joined=1">
+          <div class="hp-field" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="_honey"></label>
+          </div>
+          <div class="waitlist-fields">
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+            <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+            <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+          </div>
+        </form>
+        <div class="waitlist-success">Thanks, you're on the list. We'll be in touch when Sarn Stone is ready.</div>
+        <div class="waitlist-note">No spam. No noise. Just the launch.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -731,6 +859,42 @@ footer .container {
         window.location.hash = 'contact';
       }
     }
+
+    var header = document.querySelector('header');
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+
+    function updateHeader() {
+      if (!header) return;
+      header.classList.toggle('scrolled', window.scrollY > 24);
+    }
+
+    function setActiveLink(id) {
+      navLinks.forEach(function (link) {
+        var isMatch = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('is-active', isMatch);
+      });
+    }
+
+    if ('IntersectionObserver' in window && sections.length) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setActiveLink(entry.target.id);
+          }
+        });
+      }, {
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(function (section) {
+        observer.observe(section);
+      });
+    }
+
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
   })();
 </script>
 
