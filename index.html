@@ -182,6 +182,8 @@ nav a.is-active::after { transform: scaleX(1); }
   object-fit: cover;
   object-position: center;
   display: block;
+  border-radius: 0;
+  box-shadow: none;
   animation: heroDrift 18s ease-in-out infinite alternate;
   transform-origin: center;
 }
@@ -250,6 +252,114 @@ nav a.is-active::after { transform: scaleX(1); }
 }
 .hero-cta .btn-outline:hover {
   border-color: #F7F5F0;
+}
+
+/* Home terrain */
+.home-terrain {
+  padding: 13vh 0 11vh;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(168,144,120,0.14) 0%, rgba(168,144,120,0) 34%),
+    linear-gradient(180deg, #F7F5F0 0%, #EEE9DF 100%);
+}
+.terrain-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  gap: clamp(34px, 6vw, 86px);
+  align-items: center;
+}
+.terrain-copy {
+  max-width: 430px;
+}
+.terrain-copy .section-label,
+.terrain-copy .section-title {
+  text-align: left;
+}
+.terrain-copy .section-title {
+  margin-bottom: 24px;
+}
+.terrain-copy p {
+  font-size: 15px;
+  color: rgba(42,42,42,0.76);
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+.terrain-notes {
+  display: grid;
+  gap: 1px;
+  background: rgba(214,210,201,0.8);
+  border: 1px solid rgba(214,210,201,0.8);
+  margin-top: 34px;
+}
+.terrain-note {
+  background: rgba(247,245,240,0.72);
+  padding: 20px 22px;
+}
+.terrain-note strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.terrain-note span {
+  display: block;
+  font-size: 12px;
+  color: var(--text-clay);
+  line-height: 1.7;
+}
+.terrain-visual {
+  position: relative;
+  min-height: 560px;
+}
+.terrain-main,
+.terrain-inset {
+  position: absolute;
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 28px 80px rgba(47,45,42,0.16);
+}
+.terrain-main {
+  right: 0;
+  top: 0;
+  width: min(92%, 690px);
+  height: 470px;
+  object-position: center;
+}
+.terrain-inset {
+  left: 0;
+  bottom: 0;
+  width: min(43%, 280px);
+  aspect-ratio: 4 / 5;
+  object-position: center;
+  border: 12px solid var(--bg-plaster);
+}
+.terrain-caption {
+  position: absolute;
+  right: 6%;
+  bottom: 18px;
+  max-width: 270px;
+  padding: 18px 20px;
+  background: rgba(247,245,240,0.88);
+  color: var(--text-clay);
+  font-size: 12px;
+  line-height: 1.7;
+  box-shadow: 0 18px 50px rgba(47,45,42,0.12);
+}
+@media (max-width: 920px) {
+  .terrain-layout { grid-template-columns: 1fr; }
+  .terrain-copy { max-width: 620px; }
+  .terrain-visual { min-height: auto; display: grid; grid-template-columns: 1fr 0.65fr; gap: 16px; align-items: end; }
+  .terrain-main,
+  .terrain-inset,
+  .terrain-caption { position: static; width: 100%; }
+  .terrain-main { height: auto; aspect-ratio: 16 / 9; }
+  .terrain-inset { border-width: 8px; }
+  .terrain-caption { grid-column: 1 / -1; max-width: none; }
+}
+@media (max-width: 640px) {
+  .terrain-visual { grid-template-columns: 1fr; }
 }
 
 /* Buttons */
@@ -502,9 +612,14 @@ img {
   gap: 40px;
   align-items: center;
 }
+.lifestyle-card picture {
+  display: block;
+  width: 100%;
+  justify-self: center;
+}
 .lifestyle-img {
   width: 100%;
-  max-width: 545px;
+  max-width: 680px;
   display: block;
   object-fit: cover;
   justify-self: center;
@@ -782,16 +897,43 @@ footer .container {
 <!-- Hero -->
 <section class="hero">
   <picture class="hero-picture">
-    <source srcset="river-stones-flatlay-hero.webp" type="image/webp">
-    <img src="river-stones-flatlay-hero.jpg" alt="Natural river stones on a woven jute mat" class="hero-banner" width="2560" height="1144" fetchpriority="high" decoding="async">
+    <source srcset="site-reference-2026-05-12.webp" type="image/webp">
+    <img src="site-reference-2026-05-12.jpg" alt="Child balancing across Sarn Stone stepping stones in a warm playroom" class="hero-banner" width="1280" height="696" fetchpriority="high" decoding="async">
   </picture>
   <div class="hero-overlay">
     <div class="hero-eyebrow">Indoor sensory play, reimagined</div>
-    <h1>Nature underfoot.</h1>
-    <p>Silicone stepping stones cast from real river rock — biomimetic textures, earth tones, and the quiet confidence that comes from learning to trust your footing.</p>
+    <h1>A little riverbank, brought indoors.</h1>
+    <p>Silicone stepping stones cast from real river rock — textured terrain for balance, sensory play, and the quiet confidence that comes from learning to trust your footing.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Join the Waitlist</a>
       <a href="#about" class="btn btn-outline">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- Home Terrain -->
+<section class="home-terrain">
+  <div class="container terrain-layout">
+    <div class="terrain-copy fade-up">
+      <div class="section-label">Designed for motion</div>
+      <div class="section-title">Not a toy pile. A path.</div>
+      <p>Sarn Stone turns ordinary floor space into a small landscape: a route to test, rearrange, cross, return to, and master.</p>
+      <p>The shapes are quiet enough for the room, but rich enough for bare feet — weighted, tactile, and made to invite movement without shouting for attention.</p>
+      <div class="terrain-notes" aria-label="Sarn Stone design notes">
+        <div class="terrain-note"><strong>Balance</strong><span>Uneven surfaces encourage careful steps, posture shifts, and body awareness.</span></div>
+        <div class="terrain-note"><strong>Texture</strong><span>Stone-cast ridges give sensory feedback without bright plastic or noise.</span></div>
+      </div>
+    </div>
+    <div class="terrain-visual fade-up">
+      <picture>
+        <source srcset="kids-rock-lifestyle-02.webp" type="image/webp">
+        <img src="kids-rock-lifestyle-02.jpg" alt="Child's bare feet stepping onto textured Sarn Stone pieces" class="terrain-main" width="1194" height="896" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source srcset="texture-study-02.webp" type="image/webp">
+        <img src="texture-study-02.jpg" alt="Close-up of earthy stone texture and soft matte surface" class="terrain-inset" width="900" height="1125" loading="lazy" decoding="async">
+      </picture>
+      <div class="terrain-caption">A landscape scaled for living rooms: warm, tactile, rearrangeable, and calm enough to leave out.</div>
     </div>
   </div>
 </section>
@@ -885,10 +1027,13 @@ footer .container {
   <div class="container">
     <div class="section-label">In Use</div>
     <div class="lifestyle-card fade-up">
-      <img src="lifestyle-foot-stones.jpg" alt="Child stepping onto Sarn Stone stepping stones in a warm home setting" class="lifestyle-img" width="545" height="409" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="site-reference-2026-05-12.webp" type="image/webp">
+        <img src="site-reference-2026-05-12.jpg" alt="Child balancing across Sarn Stone stepping stones in a warm playroom" class="lifestyle-img" width="1280" height="696" loading="lazy" decoding="async">
+      </picture>
       <div class="lifestyle-copy">
-        <h3>Made for bare feet, balance, and quiet confidence.</h3>
-        <p>A softer, warmer kind of obstacle course, grounded in the textures children reach for instinctively. This is the feeling we want the stones to bring into the room.</p>
+        <h3>A play object that can stay in the room.</h3>
+        <p>The stones are meant to live somewhere between furniture, sculpture, and obstacle course — beautiful enough to leave out, sturdy enough to become part of the daily path.</p>
       </div>
     </div>
   </div>
